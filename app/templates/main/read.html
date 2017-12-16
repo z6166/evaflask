@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% block page_content %}
+<div class="page-header">
+    <h2>{{ a.title }}</h2>
+            <hr>
+            <p>{{ a.create_time }} | {{ a.category.name }}</p>
+        {% if a.body_html %}
+            {{ a.body_html | safe }}
+        {% else %}
+            {{ a.body }}
+        {% endif %}
+</div>
+{% endblock %}

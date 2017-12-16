@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<h1>维修进度查询</h1>
+<div class="col-md-6">
+        <hr>
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-6">
+            {% if (status==True) %}
+            <h2>维修已完成，请选择空闲时间到东三200取回</h2>
+            {% elif (status==False) %}
+            <h2>维修还在进行中，请耐心等待</h2>
+            {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'admin/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block page_content %}
+    <div class="col-md-6">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>分类编号</th>
+                <th>分类标题</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for foo in list %}
+                <tr>
+                    <th>{{ foo.id }}</th>
+                    <th>{{ foo.name }}</th>
+                    <th><a href="{{ url_for('admin.category_edit', id=foo.id) }}" class="button small">修改</a></th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

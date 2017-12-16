@@ -1,0 +1,72 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}管理员界面{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+<link rel="icon" href="static/favicon.ico" type="image/x-icon">
+<script  src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">浙江大学学生E志者协会</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/comment">表白墙管理</a></li>
+                <li><a href="/admin/download"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>记录下载</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><strong>Menu</strong><span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/admin/record">电脑维修记录</a></li>
+                      <li><a href="/admin/erecord">电器维修记录</a></li>
+                      <li><a href="/admin/article">文章</a></li>
+                      <li><a href="/admin/category">目录</a></li>
+                    <li role="separator" class="divider"></li>
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('admin.logout') }}">管理员登出</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('admin.login') }}">管理员登入</a></li>
+                    {% endif %}
+                  </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
+    </div>
+    <div class="footer">
+        <ul class="list-inline text-center">
+            <hr />
+            <li>浙江大学东三-200 <strong><a href="//zjueva.cn/" >浙江大学学生E志者协会</a></strong>
+                备案号：浙ICP备17008331号</li>
+        </ul>
+    </div>
+{% endblock %}
+
+
+

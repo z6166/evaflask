@@ -1,0 +1,123 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<!--img src="{{ url_for('static', filename = 'main/backgroud.png') }}" alt="First slide"-->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503216871488&di=481fd3b30c4b7251954206a7c35b6453&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D321143402%2C194363490%26fm%3D214%26gp%3D0.jpg" alt="First slide" alt="...">
+              <div class="carousel-caption">
+                1
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503216918747&di=f9218ac8950dd99eb120215173bcd31a&imgtype=0&src=http%3A%2F%2Fs9.knowsky.com%2Fbizhi%2Fl%2F5001-10000%2F2009528111954303053199.jpg" alt="...">
+              <div class="carousel-caption">
+                2
+              </div>
+            </div>
+              <div class="item">
+                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1503216960910&di=b60386ac6d97306c96a965031325cc7e&imgtype=0&src=http%3A%2F%2Fs9.knowsky.com%2Fbizhi%2Fl%2F5001-10000%2F2009528111948265553116.jpg" alt="...">
+                <div class="carousel-caption">
+                  3
+              </div>
+              </div>
+                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+        </div>
+        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-md-10">
+      <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse"
+                        data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">教程名称</a>
+            </div>
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li><a href="#video">社团视频</a></li>
+                    <li><a href="#introduction">社团简介</a></li>
+                    <li><a href="#history">我们的历史</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="text-center" data-spy="scroll" data-target="#navbar-example" data-offset="0"
+	 style="overflow:auto; position: relative;">
+	<h1 id="video">社团视频</h1>
+  <br>
+	<div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="http://v.qq.com/iframe/player.html?vid=g01655y5lkz"></iframe>
+    </div>
+  <br><br><br>
+
+    <h1 id="introduction">社团简介</h1>
+  <br>
+	<p style="font-size:x-large">
+      E志者协会以“奉献爱心、服务群众”为己任，凝聚拥有电器维修爱好者的力量，以电气学院丰富的学科优势资源为依托，提供浙大学子展示自我、服务大众的平台，建设提高专业知识、交流技术经验的环境，全面提高会员的综合素质，近年来更是实现了由老的志愿者服务组织向新的社团组织发展的成功转型。E志者协会及其前身电气维修小组多次被评为校级志愿者先进（优秀）集体，还曾获得“浙江大学十大优秀志愿者服务集体”、“浙江省优秀志愿者服务队伍”。2006年，其便民利民服务项目被评为“省级青年志愿者服务工程”。2007年被列为“浙江大学大学生素质拓展基地创建单位”
+	</p>
+  <br><br><br>
+
+	<h1 id="history">我们的历史</h1>
+  <br>
+	<p style="font-size:x-large">浙江大学学生E志者协会的前身是<br><br>
+      1984年前电机系（现电气工程学院）的<br><br>
+      学生（陈强等）创办的<br><br>
+      <strong>电器维修小组</strong><br><br>
+      在2008年9月正式成为校级学生社团<br><br>
+      <img class="center block" src="{{ url_for('static', filename = 'main/history.jpg') }}" alt="history">
+	</p>
+</div>
+    </div>
+    <div class="col-xs-2 col-md-2">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="panel panel-default">
+          <div class="panel-heading">目录</div>
+              <ul class="list-group">
+                {% for foo in clist %}
+                <a href="#" class="list-group-item">{{ foo.name }}</a>
+                {% endfor %}
+              </ul>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="panel panel-default">
+          <div class="panel-heading">近期文章</div>
+                <ul class="list-group">
+                {% for foo in alist %}
+                    <a href="{{ url_for('main.read' , id=foo.id) }}" class="list-group-item">{{ foo.title }}     {{ foo.create_time }}</a>
+                {% endfor %}
+                </ul>
+        </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <ul class="list-inline text-center">
+            <hr />
+            <li>浙江大学东三-200 <strong><a href="//zjueva.cn/" >浙江大学学生E志者协会</a></strong>
+                备案号：浙ICP备17008331号</li>
+        </ul>
+    </div>
+{% endblock %}

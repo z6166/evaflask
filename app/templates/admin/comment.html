@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+    <div calss="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>评论</th>
+            <th>是否加精</th>
+        </tr>
+        </thead>
+        {% for comment in comment %}
+        <tbody>
+        <th>{{ comment.id }}</th>
+        <th>{{ comment.comment }}</th>
+        <th>{{ comment.verify }}</th>
+        <th>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+                <div style="display:none">{{ form.id(value=comment.id) }}</div>
+                            <!-- 这里可能看不懂，我把返回id的文本框给隐藏了 -->
+            </form>
+        </th>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

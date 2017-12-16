@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block page_content %}
+<script type=text/javascript>
+      $(document).ready(function(){
+          $('#myModal').modal('show')
+        });
+</script>
+<div class="container">
+    <div class="page-header">
+        <b>序号:</b><br>{{ id }}<br><br>
+        <b>时间:</b><br>{{ time }}<br><br>
+        <b>识别码:</b><br>{{ random_id }}<br><br>
+        {{ wtf.quick_form(form) }}<br>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Attention!!</h4>
+      </div>
+      <div class="modal-body">
+        <h3><strong>登记时不要忘记检查是否拆机、是否解决和是否取回的选项</strong></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}

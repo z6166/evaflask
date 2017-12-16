@@ -1,0 +1,112 @@
+{% extends "admin/base.html" %}
+
+{%  block page_content%}
+<style type="text/css">
+
+</style>
+<div class="container">
+    <div class="row" style="width: auto">
+        <div class="col-md-2">
+            <div class="list-group">
+              <a href="{{ url_for('admin.erecord' ,status=1) }}" class="list-group-item"><span class="badge">{{ allnum }}</span>全部</a>
+              <a href="{{ url_for('admin.erecord' ,status=2) }}" class="list-group-item"><span class="badge">{{ nverifynum }}</span>未取回</a>
+              <a href="{{ url_for('admin.erecord' ,status=3) }}" class="list-group-item"><span class="badge">{{ nsolvenum }}</span>未解决</a>
+              <a href="{{ url_for('admin.erecord' ,status=4) }}" class="list-group-item"><span class="badge">{{ oknum }}</span>已完成</a>
+                <a href="{{ url_for('admin.erecord' ,status=5) }}" class="list-group-item"><span class="badge">{{ nobody }}</span>未认领</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Dropdown link</a></li>
+                  <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" id="partone">
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>时间</th>
+                            <th>识别码</th>
+                            <th width="80">送修者</th>
+                            <th>手机或QQ</th>
+                            <th>问题描述</th>
+                            <th>电器类型</th>
+                            <th>是否解决</th>
+                            <th>维修者</th>
+                            <th>确认取回</th>
+                            <th>修改</th>
+                        </tr>
+                    </thead>
+                    {% for result in results %}
+                    <tbody>
+                        {% if result.verify and result.mender%}
+                        <tr class="alert-success">
+                        <!-- 如果已经确认取回切已填写维修人姓名，则显示会绿色-->
+                            <td>{{ result.id }}</td>
+                            <td>{{ result.create_time }}</td>
+                            <td>{{ result.random_id }}</td>
+                            <td>{{ result.user }}</td>
+                            <td>{{ result.phone }}</td>
+                            <td>{{ result.problem }}</td>
+                            <td>{{ result.ele_type }}</td>
+                            <td>{{ result.solve }}</td>
+                            <td>{{ result.mender }}</td>
+                            <td>{{ result.verify }}</td>
+                            <td>
+                                <form method="POST">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.submit() }}
+                                    <div style="display:none">{{ form.id(value=result.id) }}</div>
+                                    <!-- 这里可能看不懂，我把返回id的文本框给隐藏了 -->
+                                </form>
+                            </td>
+                        </tr>
+                        {% elif result.verify and not result.mender %}
+                        <tr class="alert-warning">
+                            <td>{{ result.id }}</td>
+                            <td>{{ result.create_time }}</td>
+                            <td>{{ result.random_id }}</td>
+                            <td>{{ result.user }}</td>
+                            <td>{{ result.phone }}</td>
+                            <td>{{ result.problem }}</td>
+                            <td>{{ result.ele_type }}</td>
+                            <td>{{ result.solve }}</td>
+                            <td>{{ result.mender }}</td>
+                            <td>{{ result.verify }}</td>
+                            <td>
+                                <form method="POST">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.submit() }}
+                                    <div style="display:none">{{ form.id(value=result.id) }}</div>
+                                    <!-- 这里可能看不懂，我把返回id的文本框给隐藏了 -->
+                                </form>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr class="alert-danger">
+                            <td>{{ result.id }}</td>
+                            <td>{{ result.create_time }}</td>
+                            <td>{{ result.random_id }}</td>
+                            <td>{{ result.user }}</td>
+                            <td>{{ result.phone }}</td>
+                            <td>{{ result.problem }}</td>
+                            <td>{{ result.ele_type }}</td>
+                            <td>{{ result.solve }}</td>
+                            <td>{{ result.mender }}</td>
+                            <td>{{ result.verify }}</td>
+                            <td>
+                                <form method="POST">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.submit() }}
+                                    <div style="display:none">{{ form.id(value=result.id) }}</div>
+                                    <!-- 这里可能看不懂，我把返回id的文本框给隐藏了 -->
+                                </form>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                    {% endfor %}
+                </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

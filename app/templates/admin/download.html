@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{%  block page_content%}
+    <div class="container">
+        <a href="{{ url_for('static', filename='admin/computerrecord.xls') }}">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>点击下载电脑记录
+        </button></a>
+        <br>
+        <br>
+        <a href="{{ url_for('static', filename='admin/elerecord.xls') }}">
+        <button type="button" class="btn btn-default btn-lg" >
+          <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>点击下载电器记录
+        </button></a>
+    </div>
+{% endblock %}

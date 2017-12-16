@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+<div class="col-md-6">
+        <h1>取回确认</h1>
+        <p style="color:red">当您取回电脑或电器并离开时，请确认取回</p>
+        <hr>
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-6">
+    </div>
+{% endblock %}

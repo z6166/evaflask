@@ -1,0 +1,68 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}E志者维修登记平台{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon">
+    <style type="text/css">
+		.scrollspy-example {
+			height: 900px;
+			overflow: auto;
+			position: relative;
+		}
+	</style>
+{% endblock %}
+
+
+{% block navbar %}
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">浙江大学学生E志者协会</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/user/amend">我要维修</a></li>
+                <li><a href="/user/verify">确认取回</a></li>
+                <li><a href="/user/inquire">维修进度查询</a></li>
+{#                <li><a href="{{ url_for('main.comment') }}">表白墙</a></li>#}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+{#                <li><a href="{{ url_for('admin.register') }}">注册</a></li>#}
+                <li><a href="{{ url_for('admin.index') }}">管理员</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
+    </div>
+    <div class="footer">
+        <ul class="list-inline text-center">
+            <hr />
+            <li>浙江大学东三-200 <strong><a href="//zjueva.cn/" >浙江大学学生E志者协会</a></strong></li>
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1270698442'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1270698442%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+                <p>备案号：浙ICP备17008331号</p>
+        </ul>
+    </div>
+{% endblock %}
+

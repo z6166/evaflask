@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon">
+<script  src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+{% endblock %}
+{% block content %}
+<script type=text/javascript>
+      $(document).ready(function(){
+          $('#myModal').modal('show')
+        });
+</script>
+<style type="text/css">
+        body {
+            background-color: red;
+        }
+	</style>
+<div class="modal" tabindex="-1" role="dialog" id="myModal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3><strong>登记时不要忘记检查是否拆机、是否解决和是否取回的选项</strong></h3>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}

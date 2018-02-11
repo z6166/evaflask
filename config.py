@@ -22,7 +22,7 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:will@localhost/eva?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:zjueva@localhost/eva?charset=utf8'
     # SQLALCHEMY链接数据库都是以URI方式格式�?mysql://账户�?密码@地址/数据库表�?
 
 config = {

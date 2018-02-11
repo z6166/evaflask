@@ -18,6 +18,10 @@ def index():
     '''
     return redirect(url_for('main.user_amend'))
 
+@main.route('/test')
+def test():
+    return render_template('main/front.html')
+
 
 @main.route('/.well-known/pki-validation/fileauth.txt')
 def tencentssl():

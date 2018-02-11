@@ -1,8 +1,8 @@
-"""1
+"""first init db
 
-Revision ID: 2a1e72b4a939
+Revision ID: 71e7648973bd
 Revises: 
-Create Date: 2017-10-02 19:58:11.409385
+Create Date: 2017-12-16 18:05:18.166748
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2a1e72b4a939'
+revision = '71e7648973bd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -61,6 +61,16 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('random_id')
     )
+    op.create_table('trouble',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=64), nullable=True),
+    sa.Column('body', sa.Text(), nullable=True),
+    sa.Column('body_html', sa.Text(), nullable=True),
+    sa.Column('create_time', sa.DATETIME(), nullable=True),
+    sa.Column('writer', sa.String(length=64), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('title')
+    )
     op.create_table('unid',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('random_id', sa.Integer(), nullable=True),
@@ -95,6 +105,7 @@ def downgrade():
     op.drop_table('articles')
     op.drop_table('users')
     op.drop_table('unid')
+    op.drop_table('trouble')
     op.drop_table('record')
     op.drop_table('erecord')
     op.drop_table('comment')
